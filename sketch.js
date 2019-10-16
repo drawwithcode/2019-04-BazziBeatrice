@@ -40,37 +40,27 @@ function draw() {
   noStroke();
   fill(215,195,141);
   textSize(10);
-  text("stay on the right to keep the magic going", windowWidth / 1.7, windowHeight / 1.1);
+  text("CLICK TO PLAY THE MAGIC/ CLICK TO PAUSE IT", windowWidth / 2, windowHeight / 1.1);
   pop();
 
-  push();
-  textAlign(CENTER, CENTER);
-  noStroke();
-  fill(67, 67, 57);
-  textSize(10);
-  text("go to the left to shut the magic", windowWidth / 2.6 , windowHeight / 1.1);
-  pop();
 
   function touchStarted() {
     getAudioContext().resume()
   }
 
 
-  // song
-  console.log("ok");
-  if (mouseX > width / 2) {
-    // background(0, 255, 0);
-    if (mySong.isPlaying() == false) {
-      mySong.play();
-      mySong.rate();
-      mySong.amp();
-    }
-  } else {
-    // mySong.rate((mouseX + 1) * 2);
-    // mySong.amplitude(mouseY / height);
+  // // song
+  // console.log("ok");
+  // if (mouseX > width / 2) {
+  //   // background(0, 255, 0);
+  //   if (mySong.isPlaying() == false) {
+  //     mySong.play();
+  //   }
+  // } else {
+  //
+  //   mySong.pause();
+  // }
 
-    mySong.stop();
-  }
 
   volume = analyzer.getLevel();
   volume = map(volume, 0, 1, 0, height);
@@ -139,3 +129,12 @@ class Particle {
 
 
 }
+
+// song
+console.log("ok");
+function mousePressed() {
+  if (!mySong.isPlaying()) {
+    mySong.play();
+  } else {
+    mySong.pause();
+  }}
